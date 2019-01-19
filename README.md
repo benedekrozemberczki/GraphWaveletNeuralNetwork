@@ -73,13 +73,13 @@ Training the model is handled by the `src/main.py` script which provides the fol
 ```
   --epochs                INT       Number of Adam epochs.         Default is 200.
   --learning-rate         FLOAT     Number of training epochs.     Default is 0.001.
-  --weight-decay          FLOAT     Weight decay.                  Default is 10**-5.
+  --weight-decay          FLOAT     Weight decay.                  Default is 5*10**-4.
   --filters               INT       Number of filters.             Default is 16.
   --dropout               FLOAT     Dropout probability.           Default is 0.5.
   --test-size             FLOAT     Test set ratio.                Default is 0.2.
   --seed                  INT       Random seeds.                  Default is 42.
   --approximation-order   INT       Chebyshev polynomial order.    Default is 20.
-  --tolerance             FLOAT     Wavelet coefficient limit.     Default is 10**-3.
+  --tolerance             FLOAT     Wavelet coefficient limit.     Default is 10**-4.
   --scale                 FLOAT     Heat kernel scale.             Default is 1.0.
 ```
 
@@ -94,20 +94,14 @@ python src/main.py
 <img style="float: center;" src="gwnn_run.jpg">
 </p>
 
-Creating an Attention Walk embedding of the default dataset with 256 dimensions.
+Training a model with more filters in the first layer.
 
 ```
-python src/main.py --dimensions 256
+python src/main.py --filters 32
 ```
 
-Creating an Attention Walk embedding of the default dataset with a higher window size.
+Approximationg the wavelets with polynomials that have an order of 5.
 
 ```
-python src/main.py --window-size 20
-```
-
-Creating an embedding of an other dataset the `Twitch Brasilians`. Saving the outputs under custom file names.
-
-```
-python src/main.py --edge-path input/ptbr_edges.csv --embedding-path output/ptbr_AW_embedding.csv --attention-path output/ptbr_AW_attention.csv
+python src/main.py --approximation-order 5
 ```
