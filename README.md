@@ -57,31 +57,35 @@ The **target vector** is a csv with two columns and headers, the first contains 
 
 ### Options
 
-Learning of the embedding is handled by the `src/main.py` script which provides the following command line arguments.
+Training the model is handled by the `src/main.py` script which provides the following command line arguments.
 
 #### Input and output options
 
 ```
-  --edge-path         STR   Input graph path.     Default is `input/chameleon_edges.csv`.
-  --embedding-path    STR   Embedding path.       Default is `output/chameleon_AW_embedding.csv`.
-  --attention-path    STR   Embedding path.       Default is `output/chameleon_AW_attention.csv`.
+  --edge-path        STR   Input graph path.   Default is `input/cora_edges.csv`.
+  --features-path    STR   Features path.      Default is `input/cora_features.json`.
+  --target-path      STR   Target path.        Default is `input/cora_target.csv`.
+  --log-path         STR   Log path.           Default is `logs/cora_logs.json`.
 ```
 
 #### Model options
 
 ```
-  --dimensions              INT       Number of embeding dimensions.        Default is 128.
-  --epochs                  INT       Number of training epochs.            Default is 200.
-  --window-size             INT       Skip-gram window size.                Default is 5.
-  --learning-rate           FLOAT     Learning rate value.                  Default is 0.01.
-  --beta                    FLOAT     Regularization parameter.             Default is 0.1.
+  --epochs                INT       Number of Adam epochs.         Default is 200.
+  --learning-rate         FLOAT     Number of training epochs.     Default is 0.001.
+  --weight-decay          FLOAT     Weight decay.                  Default is 10**-5.
+  --filters               INT       Number of filters.             Default is 16.
+  --dropout               FLOAT     Dropout probability.           Default is 0.5.
+  --test-size             FLOAT     Test set ratio.                Default is 0.2.
+  --seed                  INT       Random seeds.                  Default is 42.
+  --approximation-order   INT       Chebyshev polynomial order.    Default is 20.
+  --tolerance             FLOAT     Wavelet coefficient limit.     Default is 10**-3.
+  --scale                 FLOAT     Heat kernel scale.             Default is 1.0.
 ```
 
 ### Examples
 
-The following commands learn a graph embedding and write the embedding to disk. The node representations are ordered by the ID.
-
-Creating a Attention Walk embedding of the default dataset with the default hyperparameter settings. Saving the embedding at the default path.
+The following commands learn  the weights of a graph wavelet neural network and save the logs. Training a graph wavelet neural network on the default dataset with standard hyperparameter settings. Saving the embedding at the default path.
 
 ```
 python src/main.py
