@@ -42,16 +42,16 @@ The **feature matrix** is a sparse binary one it is stored as a json. Nodes are 
   n: [2018, 10000]}
 ```
 
-The **target vector** is a sparse binary one it is stored as a json. Nodes are keys of the json and feature indices are the values. For each node feature column ids are stored as elements of a list. The feature matrix is structured as:
+The **target vector** is a csv with two columns and headers, the first contains the node identifiers the second the targets. This csv is sorted by node identifiers and the target column contains the class meberships indexed from zero. 
 
-```javascript
-{ 0: [0, 1, 38, 1968, 2000, 52727],
-  1: [10000, 20, 3],
-  2: [],
-  ...
-  n: [2018, 10000]}
-```
-
+| **NODE ID**| **Target** |
+| --- | --- |
+| 0 | 3 |
+| 1 | 1 |
+| 2 | 0 |
+| 3 | 1 |
+| ... | ... |
+| n | 3 |
 
 ### Options
 
