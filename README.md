@@ -91,7 +91,7 @@ The following commands learn  the weights of a graph wavelet neural network and 
 python src/main.py
 ```
 <p align="center">
-<img style="float: center;" src="attention_walk_run_example.jpg">
+<img style="float: center;" src="gwnn_run.jpg">
 </p>
 
 Creating an Attention Walk embedding of the default dataset with 256 dimensions.
