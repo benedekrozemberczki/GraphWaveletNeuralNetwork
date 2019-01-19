@@ -1,8 +1,8 @@
-from tqdm import trange
-from gwnn_layer import SparseGraphWaveletLayer, DenseGraphWaveletLayer
 import torch
-from sklearn.model_selection import train_test_split
 import time
+from tqdm import trange
+from sklearn.model_selection import train_test_split
+from gwnn_layer import SparseGraphWaveletLayer, DenseGraphWaveletLayer
 
 class GraphWaveletNeuralNetwork(torch.nn.Module):
     """
@@ -30,8 +30,6 @@ class GraphWaveletNeuralNetwork(torch.nn.Module):
         predictions = torch.nn.functional.log_softmax(deep_features_2, dim=1)
         return predictions
         
-
-
 class GWNNTrainer(object):
 
 
