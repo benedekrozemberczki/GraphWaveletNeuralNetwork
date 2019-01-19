@@ -86,7 +86,7 @@ class GWNNTrainer(object):
 
     def fit(self):
         print("Training.\n")
-        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.args.learning_rate, weight_decay=5e-4)
+        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.args.learning_rate, weight_decay=self.args.weight_decay)
         self.model.train()
         self.epochs = trange(self.args.epochs, desc="Loss")
         for epoch in self.epochs:
