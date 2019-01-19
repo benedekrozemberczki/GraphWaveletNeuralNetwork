@@ -29,11 +29,7 @@ class GraphWaveletLayer(torch.nn.Module):
 
 class SparseGraphWaveletLayer(GraphWaveletLayer):
     """
-    Abstract Signed SAGE convolution class.
-    :param in_channels: Number of features.
-    :param out_channels: Number of filters.
-    :param norm_embed: Normalize embedding -- boolean.
-    :param bias: Add bias or no.
+    Sparse Graph Wavelet Layer Class.
     """
 
     def forward(self, phi_indices, phi_values, phi_inverse_indices, phi_inverse_values, feature_indices, feature_values, dropout):
@@ -62,6 +58,4 @@ class DenseGraphWaveletLayer(GraphWaveletLayer):
         phi_product_indices, phi_product_values = spspmm(rescaled_phi_indices, rescaled_phi_values, phi_inverse_indices, phi_inverse_values, self.ncount, self.ncount, self.ncount)
         filtered_features = torch.mm(features, self.weight_matrix)
         localized_features = spmm(phi_product_indices, phi_product_values, self.ncount, filtered_features)
-        dropout_features = localized_features
-
-        return dropout_features 
+        return localized_features
