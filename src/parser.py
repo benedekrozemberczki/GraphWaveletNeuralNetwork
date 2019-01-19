@@ -60,13 +60,13 @@ def parameter_parser():
 
     parser.add_argument("--scale",
                         type = float,
-                        default = 5.0,
+                        default = 1.0,
 	                help = "Heat kernel scale length. Default is 1.0.")
 
     parser.add_argument("--learning-rate",
                         type = float,
                         default = 0.001,
-	                help = "Learning rate. Default is 0.01.")
+	                help = "Learning rate. Default is 0.001.")
 
     parser.add_argument("--weight-decay",
                         type = float,
