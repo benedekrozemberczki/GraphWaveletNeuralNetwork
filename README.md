@@ -85,7 +85,7 @@ Training the model is handled by the `src/main.py` script which provides the fol
 
 ### Examples
 
-The following commands learn  the weights of a graph wavelet neural network and save the logs. Training a graph wavelet neural network on the default dataset with standard hyperparameter settings. Saving the embedding at the default path.
+The following commands learn  the weights of a graph wavelet neural network and save the logs. Training a graph wavelet neural network on the default dataset with standard hyperparameter settings. Saving the logs at the default path.
 
 ```
 python src/main.py
