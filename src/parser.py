@@ -33,6 +33,11 @@ def parameter_parser():
                         default = 200,
 	                help = "Number of training epochs. Default is 200.")
 
+    parser.add_argument("--filters",
+                        type = int,
+                        default = 16,
+	                help = "Filters (neurons) in convolution. Default is 16.")
+
     parser.add_argument("--approximation-order",
                         type = int,
                         default = 20,
@@ -46,7 +51,7 @@ def parameter_parser():
     parser.add_argument("--dropout",
                         type = float,
                         default = 0.5,
-	                help = "Random seed for sklearn pre-training. Default is 42.")
+	                help = "Dropout probability. Default is 0.5.")
 
     parser.add_argument("--seed",
                         type = int,
@@ -72,10 +77,5 @@ def parameter_parser():
                         type = float,
                         default = 10**-5,
 	                help = "Adam weight decay. Default is 10^-5.")
-
-    parser.add_argument("--filters",
-                        type = int,
-                        default = 16,
-	                help = "Filters in convolution. Default is 16.")
 
     return parser.parse_args()
