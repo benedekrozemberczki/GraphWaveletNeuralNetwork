@@ -27,6 +27,7 @@ torch             0.4.1
 torch-scatter     1.0.4
 torch-sparse      0.2.2
 torchvision       0.2.1
+scikit-learn      0.20.0
 ```
 ### Datasets
 
