@@ -16,7 +16,7 @@ def parameter_parser():
     parser.add_argument("--features-path",
                         nargs = "?",
                         default = "./input/cora_features.json",
-	                help = "Edge list csv.")
+	                help = "Feature json.")
 
     parser.add_argument("--target-path",
                         nargs = "?",
@@ -41,7 +41,7 @@ def parameter_parser():
     parser.add_argument("--test-size",
                         type = float,
                         default = 0.2,
-	                help = "Random seed for sklearn pre-training. Default is 42.")
+	                help = "Ratio of training samples. Default is 0.2.")
 
     parser.add_argument("--dropout",
                         type = float,
