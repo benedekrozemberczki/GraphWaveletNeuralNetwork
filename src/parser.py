@@ -56,7 +56,7 @@ def parameter_parser():
     parser.add_argument("--tolerance",
                         type = float,
                         default = 10**-3,
-	                help = "Sparsification parameter. Default is 10^-5.")
+	                help = "Sparsification parameter. Default is 10^-3.")
 
     parser.add_argument("--scale",
                         type = float,
@@ -70,12 +70,12 @@ def parameter_parser():
 
     parser.add_argument("--weight-decay",
                         type = float,
-                        default = 0,
-	                help = "Learning rate. Default is 10^-5.")
+                        default = 10**-5,
+	                help = "Adam weight decay. Default is 10^-5.")
 
     parser.add_argument("--filters",
                         type = int,
                         default = 16,
-	                help = "Random seed for sklearn pre-training. Default is 42.")
+	                help = "Filters in convolution. Default is 16.")
 
     return parser.parse_args()
