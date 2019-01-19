@@ -1,7 +1,7 @@
+from gwnn import GWNNTrainer
+from utils import WaveletSparsifier
 from parser import parameter_parser
 from utils import tab_printer, graph_reader, feature_reader, target_reader, save_logs
-from utils import WaveletSparsifier
-from gwnn import GWNNTrainer
 
 def main():
     """
