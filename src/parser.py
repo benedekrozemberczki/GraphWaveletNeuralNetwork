@@ -30,8 +30,8 @@ def parameter_parser():
 
     parser.add_argument("--epochs",
                         type = int,
-                        default = 200,
-	                help = "Number of training epochs. Default is 200.")
+                        default = 300,
+	                help = "Number of training epochs. Default is 300.")
 
     parser.add_argument("--filters",
                         type = int,
@@ -60,8 +60,8 @@ def parameter_parser():
 
     parser.add_argument("--tolerance",
                         type = float,
-                        default = 10**-3,
-	                help = "Sparsification parameter. Default is 10^-3.")
+                        default = 10**-4,
+	                help = "Sparsification parameter. Default is 10^-4.")
 
     parser.add_argument("--scale",
                         type = float,
@@ -75,7 +75,7 @@ def parameter_parser():
 
     parser.add_argument("--weight-decay",
                         type = float,
-                        default = 10**-5,
-	                help = "Adam weight decay. Default is 10^-5.")
+                        default = 5*10**-4,
+	                help = "Adam weight decay. Default is 5*10^-4.")
 
     return parser.parse_args()
