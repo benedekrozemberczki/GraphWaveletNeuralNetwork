@@ -3,11 +3,11 @@ from torch_sparse import spspmm, spmm
 
 class GraphWaveletLayer(torch.nn.Module):
     """
-    Abstract Signed SAGE convolution class.
+    Abstract Graph Wavelet Layer class.
     :param in_channels: Number of features.
     :param out_channels: Number of filters.
-    :param norm_embed: Normalize embedding -- boolean.
-    :param bias: Add bias or no.
+    :param ncount: Number of nodes.
+    :param device: Device to train on.
     """
     def __init__(self, in_channels, out_channels, ncount, device):
         super(GraphWaveletLayer, self).__init__()
@@ -19,11 +19,17 @@ class GraphWaveletLayer(torch.nn.Module):
         self.init_parameters()
 
     def define_parameters(self):
+        """
+        Defining diagonal filter matrix (Theta in the paper) and weight matrix.
+        """
         self.weight_matrix = torch.nn.Parameter(torch.Tensor(self.in_channels, self.out_channels))
         self.diagonal_weight_indices = torch.LongTensor([[node for node in range(self.ncount)], [node for node in range(self.ncount)]]).to(self.device)
         self.diagonal_weight_filter = torch.nn.Parameter(torch.Tensor(self.ncount, 1))
 
     def init_parameters(self):
+        """
+        Initializing the diagonal filter and the weight matrix.
+        """
         torch.nn.init.uniform_(self.diagonal_weight_filter, 0.9, 1.1)
         torch.nn.init.xavier_uniform_(self.weight_matrix)
 
