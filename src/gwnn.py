@@ -33,6 +33,11 @@ class GraphWaveletNeuralNetwork(torch.nn.Module):
     def forward(self, phi_indices, phi_values, phi_inverse_indices, phi_inverse_values, feature_indices, feature_values):
         """
         Forward propagation pass.
+        :param phi_indices:
+        :param phi_values:
+        :param phi_inverse_indices:
+        :param phi_inverse_values:
+        :param phi
         """
         deep_features_1 = self.convolution_1(phi_indices, phi_values, phi_inverse_indices, phi_inverse_values, feature_indices, feature_values, self.args.dropout)
         deep_features_2 = self.convolution_2(phi_indices, phi_values, phi_inverse_indices, phi_inverse_values, deep_features_1)
