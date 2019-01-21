@@ -6,9 +6,13 @@ from gwnn_layer import SparseGraphWaveletLayer, DenseGraphWaveletLayer
 
 class GraphWaveletNeuralNetwork(torch.nn.Module):
     """
-    Abstract Signed SAGE convolution class.
-    :param in_channels: Number of features.
-    :param out_channels: Number of filters.
+    Graph Wavelet Neural Network class.
+    For details see: Graph Wavelet Neural Network. Bingbing Xu, Huawei Shen, Qi Cao, Yunqi Qiu, Xueqi Cheng. ICLR, 2019
+    :param args:
+    :param ncount:
+    :param feature_number:
+    :param class_number:
+    :param device:
     """
     def __init__(self, args, ncount, feature_number, class_number, device):
         super(GraphWaveletNeuralNetwork, self).__init__()
@@ -20,6 +24,7 @@ class GraphWaveletNeuralNetwork(torch.nn.Module):
         self.setup_layers()
 
     def setup_layers(self):
+        
         self.convolution_1 = SparseGraphWaveletLayer(self.feature_number, self.args.filters, self.ncount, self.device)
         self.convolution_2 = DenseGraphWaveletLayer(self.args.filters, self.class_number, self.ncount, self.device)
 
