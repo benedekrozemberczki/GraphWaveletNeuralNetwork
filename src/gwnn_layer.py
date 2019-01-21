@@ -47,7 +47,7 @@ class SparseGraphWaveletLayer(GraphWaveletLayer):
         :param feature_indices: Feature matrix index pairs.
         :param feature_values: Feature matrix values.
         :param dropout: Dropout rate.
-        :return dropout_features: Feature matrix extracted.
+        :return dropout_features: Filtered feature matrix extracted.
         """
         rescaled_phi_indices, rescaled_phi_values = spspmm(phi_indices, phi_values, self.diagonal_weight_indices, self.diagonal_weight_filter.view(-1), self.ncount, self.ncount, self.ncount)
         phi_product_indices, phi_product_values = spspmm(rescaled_phi_indices, rescaled_phi_values, phi_inverse_indices, phi_inverse_values, self.ncount, self.ncount, self.ncount)
@@ -55,7 +55,6 @@ class SparseGraphWaveletLayer(GraphWaveletLayer):
         localized_features = spmm(phi_product_indices, phi_product_values, self.ncount, filtered_features)
         dropout_features = torch.nn.functional.dropout(torch.nn.functional.relu(localized_features), training=self.training, p = dropout)
         return dropout_features 
-
 
 class DenseGraphWaveletLayer(GraphWaveletLayer):
     """
