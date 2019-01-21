@@ -54,7 +54,6 @@ class GWNNTrainer(object):
     :param features:
     :param target:
     """
-
     def __init__(self, args, sparsifier, features, target):
         self.args = args
         self.sparsifier = sparsifier
@@ -73,19 +72,25 @@ class GWNNTrainer(object):
         self.logs["training_time"] = [["Epoch","Seconds"]]
 
     def update_log(self, time, loss, epoch):
+        """
+        Updating the logs.
+        :param time:
+        :param loss:
+        :param epoch:
+        """
         self.epochs.set_description("GWNN (Loss=%g)" % round(loss.item(),4))
         self.logs["performance"].append([epoch, round(loss.item(),4)])
         self.logs["training_time"].append([epoch, time.time()-self.time])
 
     def setup_features(self):
-
+        """
+        Defining PyTorch tensors for sparse matrix multiplications.
+        """
         self.ncount = self.sparsifier.phi_matrices[0].shape[0]
         self.feature_number = self.features.shape[1]
-
-
         self.class_number = max(self.target)+1
         self.target = torch.LongTensor(self.target).to(self.device)
-
+        
         self.feature_indices = torch.LongTensor(self.features.nonzero()).to(self.device)
         self.feature_values = torch.FloatTensor(self.features[self.features.nonzero()]).view(-1).to(self.device)
 
