@@ -66,6 +66,9 @@ class GWNNTrainer(object):
         self.train_test_split()
 
     def setup_logs(self):
+        """
+        Creating a log for performance measurements.
+        """
         self.logs = dict()
         self.logs["parameters"] =  vars(self.args)
         self.logs["performance"] = [["Epoch","Loss"]]
@@ -102,6 +105,9 @@ class GWNNTrainer(object):
         self.phi_inverse_values = torch.FloatTensor(self.sparsifier.phi_matrices[1][self.sparsifier.phi_matrices[1].nonzero()]).view(-1).to(self.device)
 
     def setup_model(self):
+        """
+        Creating a log.
+        """
         self.model = GraphWaveletNeuralNetwork(self.args, self.ncount, self.feature_number, self.class_number, self.device).to(self.device)
 
     def train_test_split(self):
