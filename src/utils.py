@@ -68,10 +68,9 @@ class WaveletSparsifier(object):
     def __init__(self, graph, scale, approximation_order, tolerance):
         """
         :param graph: NetworkX graph object.
-        :param scale:
-        :param approximation_order:
-        :param tolerance: 
-        :return : sparse wavelet matrix.
+        :param scale: Kernel scale length parameter.
+        :param approximation_order: Chebyshev polynomial order.
+        :param tolerance: Tolerance for sparsification.
         """
         self.graph = graph
         self.pygsp_graph = pygsp.graphs.Graph(nx.adjacency_matrix(self.graph))
