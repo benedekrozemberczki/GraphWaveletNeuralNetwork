@@ -93,8 +93,11 @@ class WaveletSparsifier(object):
         return remaining_waves
 
     def normalize_matrices(self):
-        print("\nNormalizing the sparsified wavelets.\n")
+        """
+        Normalizing the wavelet and inverse wavelet matrices.
+        """
         
+        print("\nNormalizing the sparsified wavelets.\n")
         for i, phi_matrix in enumerate(self.phi_matrices):
             index_1 = [k for k, v in phi_matrix.items() for ke, ve in v.items()]
             index_2 = [ke for k, v in phi_matrix.items() for ke, ve in v.items()]
@@ -104,18 +107,23 @@ class WaveletSparsifier(object):
             self.phi_matrices[i] = self.phi_matrices[i]/self.phi_matrices[i].sum(axis=1)
 
     def calculate_density(self):
+        """
+        Calculating the density of the sparsified wavelet matrices.
+        """
         wavelet_density = str(round(100*len(self.phi_matrices[0].nonzero()[0])/(self.graph.number_of_nodes()**2),2))
         inverse_wavelet_density = str(round(100*len(self.phi_matrices[1].nonzero()[0])/(self.graph.number_of_nodes()**2),2))
-
         print("Density of wavelets: "+wavelet_density+"%.")
         print("Density of inverse wavelets: "+inverse_wavelet_density+"%.\n")
 
     def calculate_all_wavelets(self):
+        """
+        Graph wavelet coefficient calculation for each node.
+        """
         print("\nWavelet calculation and sparsification started.\n")
         for i, scale in enumerate(self.scales):
             self.heat_filter = pygsp.filters.Heat(self.pygsp_graph, tau = [scale])
             self.chebyshev = pygsp.filters.approximations.compute_cheby_coeff(self.heat_filter, m = self.approximation_order)
-            sparsified_wavelets = {node: self.calculate_wavelet(node, i) for node in tqdm(self.graph.nodes())}
+            sparsified_wavelets = {node: self.calculate_wavelet(node) for node in tqdm(self.graph.nodes())}
             self.phi_matrices.append(sparsified_wavelets)
         self.normalize_matrices()
         self.calculate_density()
