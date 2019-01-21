@@ -42,12 +42,12 @@ class SparseGraphWaveletLayer(GraphWaveletLayer):
         Forward propagation pass.
         :param phi_indices: Sparse wavelet matrix index pairs.
         :param phi_values: Sparse wavelet matrix values.
-        :param phi_inverse_indices:
-        :param phi_inverse_values:
-        :param feature_indices:
-        :param feature_values:
-        :param dropout:
-        :return dropout_features:
+        :param phi_inverse_indices: Inverse wavelet matrix index pairs.
+        :param phi_inverse_values: Inverse wavelet matrix values.
+        :param feature_indices: Feature matrix index pairs.
+        :param feature_values: Feature matrix values.
+        :param dropout: Dropout rate.
+        :return dropout_features: Feature matrix extracted.
         """
         rescaled_phi_indices, rescaled_phi_values = spspmm(phi_indices, phi_values, self.diagonal_weight_indices, self.diagonal_weight_filter.view(-1), self.ncount, self.ncount, self.ncount)
         phi_product_indices, phi_product_values = spspmm(rescaled_phi_indices, rescaled_phi_values, phi_inverse_indices, phi_inverse_values, self.ncount, self.ncount, self.ncount)
