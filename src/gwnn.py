@@ -24,12 +24,16 @@ class GraphWaveletNeuralNetwork(torch.nn.Module):
         self.setup_layers()
 
     def setup_layers(self):
-        
+        """
+        Setting up a sparse and a dense layer.
+        """
         self.convolution_1 = SparseGraphWaveletLayer(self.feature_number, self.args.filters, self.ncount, self.device)
         self.convolution_2 = DenseGraphWaveletLayer(self.args.filters, self.class_number, self.ncount, self.device)
 
     def forward(self, phi_indices, phi_values, phi_inverse_indices, phi_inverse_values, feature_indices, feature_values):
-
+        """
+        Forward propagation pass.
+        """
         deep_features_1 = self.convolution_1(phi_indices, phi_values, phi_inverse_indices, phi_inverse_values, feature_indices, feature_values, self.args.dropout)
         deep_features_2 = self.convolution_2(phi_indices, phi_values, phi_inverse_indices, phi_inverse_values, deep_features_1)
         predictions = torch.nn.functional.log_softmax(deep_features_2, dim=1)
