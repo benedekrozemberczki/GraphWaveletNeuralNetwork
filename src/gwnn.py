@@ -49,10 +49,10 @@ class GraphWaveletNeuralNetwork(torch.nn.Module):
 class GWNNTrainer(object):
     """
     Graph Wavelet Neural Network Trainer object.
-    :param args:
-    :param sparsifier:
-    :param features:
-    :param target:
+    :param args: Arguments object.
+    :param sparsifier: Sparsifier object with sparse wavelet filters.
+    :param features: Sparse feature matrix.
+    :param target: Target vector.
     """
     def __init__(self, args, sparsifier, features, target):
         self.args = args
