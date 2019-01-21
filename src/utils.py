@@ -33,23 +33,33 @@ def feature_reader(path):
     :param feature_path: Path to the JSON file.
     :return features: Feature sparse COO matrix.
     """
-
     features = json.load(open(path))
     index_1 = [int(k) for k,v in features.items() for fet in v]
     index_2 = [int(fet) for k,v in features.items() for fet in v]
     values = [1.0]*len(index_1) 
-
     nodes = [int(k) for k,v in features.items()]
     node_count = max(nodes)+1
-
     feature_count = max(index_2)+1
     features = sparse.csr_matrix(sparse.coo_matrix((values,(index_1,index_2)),shape=(node_count,feature_count),dtype=np.float32))
-
     return features
 
 def target_reader(path):
+    """
+    Reading thetarget vector to a numpy column vector.
+    :param path: Path to the target csv.
+    :return target: Target vector.
+    """
     target = np.array(pd.read_csv(path)["target"])
     return target
+
+def save_logs(args, logs):
+    """
+    Save the logs at the path.
+    :param args: Arguments objects.
+    :param logs: Log dictionary.
+    """
+    with open(args.log_path,"w") as f:
+        json.dump(logs,f)
 
 
 class WaveletSparsifier(object):
@@ -104,15 +114,3 @@ class WaveletSparsifier(object):
             self.phi_matrices.append(sparsified_wavelets)
         self.normalize_matrices()
         self.calculate_density()
-
-
-
-def save_logs(args, logs):
-    """
-    Save the logs at the path.
-    :param args: Arguments objects.
-    :param logs: Log dictionary.
-    """
-    with open(args.log_path,"w") as f:
-        json.dump(logs,f)
-
