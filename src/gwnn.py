@@ -74,10 +74,9 @@ class GWNNTrainer(object):
         self.logs["performance"] = [["Epoch","Loss"]]
         self.logs["training_time"] = [["Epoch","Seconds"]]
 
-    def update_log(self, time, loss, epoch):
+    def update_log(self, loss, epoch):
         """
         Updating the logs.
-        :param time:
         :param loss:
         :param epoch:
         """
@@ -111,12 +110,18 @@ class GWNNTrainer(object):
         self.model = GraphWaveletNeuralNetwork(self.args, self.ncount, self.feature_number, self.class_number, self.device).to(self.device)
 
     def train_test_split(self):
+        """
+        Train-test split on the nodes.
+        """
         nodes = [x for x in range(self.ncount)]
         train_nodes, test_nodes = train_test_split(nodes, test_size = self.args.test_size, random_state = self.args.seed)
         self.train_nodes = torch.LongTensor(train_nodes) 
         self.test_nodes = torch.LongTensor(test_nodes)
 
     def fit(self):
+        """
+        Fitting a GWNN model.
+        """
         print("Training.\n")
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.args.learning_rate, weight_decay=self.args.weight_decay)
         self.model.train()
@@ -128,9 +133,12 @@ class GWNNTrainer(object):
             loss = torch.nn.functional.nll_loss(prediction[self.train_nodes], self.target[self.train_nodes])
             loss.backward()
             self.optimizer.step()
-            self.update_log(time, loss, epoch)
+            self.update_log(loss, epoch)
 
     def score(self):
+        """
+        Scoring the test set.
+        """
         print("\nScoring.\n")
         self.model.eval()
         _, prediction = self.model(self.phi_indices, self.phi_values , self.phi_inverse_indices, self.phi_inverse_values, self.feature_indices, self.feature_values).max(dim=1)
