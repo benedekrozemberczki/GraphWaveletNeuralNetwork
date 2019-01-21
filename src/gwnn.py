@@ -8,11 +8,11 @@ class GraphWaveletNeuralNetwork(torch.nn.Module):
     """
     Graph Wavelet Neural Network class.
     For details see: Graph Wavelet Neural Network. Bingbing Xu, Huawei Shen, Qi Cao, Yunqi Qiu, Xueqi Cheng. ICLR, 2019
-    :param args:
-    :param ncount:
-    :param feature_number:
-    :param class_number:
-    :param device:
+    :param args: Arguments object.
+    :param ncount: Number of nodes.
+    :param feature_number: Number of features.
+    :param class_number: Number of classes.
+    :param device: Device used for training.
     """
     def __init__(self, args, ncount, feature_number, class_number, device):
         super(GraphWaveletNeuralNetwork, self).__init__()
