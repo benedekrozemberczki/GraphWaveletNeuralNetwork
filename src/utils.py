@@ -19,6 +19,11 @@ def tab_printer(args):
     print(t.draw())
 
 def graph_reader(path):
+    """
+    Function to create an NX graph object.
+    :param path: Path to the edge list csv.
+    :return graph: NetworkX graph.
+    """
     graph = nx.from_edgelist(pd.read_csv(path).values.tolist())
     return graph
 
