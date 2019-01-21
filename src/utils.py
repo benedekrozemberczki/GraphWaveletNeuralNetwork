@@ -61,12 +61,13 @@ def save_logs(args, logs):
     with open(args.log_path,"w") as f:
         json.dump(logs,f)
 
-
 class WaveletSparsifier(object):
-
+    """
+    Object to sparsify the wavelet coefficients for a graph.
+    """
     def __init__(self, graph, scale, approximation_order, tolerance):
         """
-        :param graph:
+        :param graph: NetworkX graph object.
         :param scale:
         :param approximation_order:
         :param tolerance: 
