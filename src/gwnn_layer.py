@@ -38,9 +38,9 @@ class SparseGraphWaveletLayer(GraphWaveletLayer):
     Sparse Graph Wavelet Layer Class.
     """
     def forward(self, phi_indices, phi_values, phi_inverse_indices, phi_inverse_values, feature_indices, feature_values, dropout):
-
+        """
+        """
         rescaled_phi_indices, rescaled_phi_values = spspmm(phi_indices, phi_values, self.diagonal_weight_indices, self.diagonal_weight_filter.view(-1), self.ncount, self.ncount, self.ncount)
-
         phi_product_indices, phi_product_values = spspmm(rescaled_phi_indices, rescaled_phi_values, phi_inverse_indices, phi_inverse_values, self.ncount, self.ncount, self.ncount)
         filtered_features = spmm(feature_indices, feature_values, self.ncount, self.weight_matrix)
         localized_features = spmm(phi_product_indices, phi_product_values, self.ncount, filtered_features)
@@ -50,11 +50,7 @@ class SparseGraphWaveletLayer(GraphWaveletLayer):
 
 class DenseGraphWaveletLayer(GraphWaveletLayer):
     """
-    Abstract Signed SAGE convolution class.
-    :param in_channels: Number of features.
-    :param out_channels: Number of filters.
-    :param norm_embed: Normalize embedding -- boolean.
-    :param bias: Add bias or no.
+    Dense Graph Wavelet Layer Class.
     """
 
     def forward(self, phi_indices, phi_values, phi_inverse_indices, phi_inverse_values, features):
