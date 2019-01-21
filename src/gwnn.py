@@ -47,7 +47,13 @@ class GraphWaveletNeuralNetwork(torch.nn.Module):
         return predictions
         
 class GWNNTrainer(object):
-
+    """
+    Graph Wavelet Neural Network Trainer object.
+    :param args:
+    :param sparsifier:
+    :param features:
+    :param target:
+    """
 
     def __init__(self, args, sparsifier, features, target):
         self.args = args
@@ -59,7 +65,6 @@ class GWNNTrainer(object):
         self.setup_features()
         self.setup_model()
         self.train_test_split()
-
 
     def setup_logs(self):
         self.logs = dict()
