@@ -37,7 +37,6 @@ class SparseGraphWaveletLayer(GraphWaveletLayer):
     """
     Sparse Graph Wavelet Layer Class.
     """
-
     def forward(self, phi_indices, phi_values, phi_inverse_indices, phi_inverse_values, feature_indices, feature_values, dropout):
 
         rescaled_phi_indices, rescaled_phi_values = spspmm(phi_indices, phi_values, self.diagonal_weight_indices, self.diagonal_weight_filter.view(-1), self.ncount, self.ncount, self.ncount)
