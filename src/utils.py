@@ -80,7 +80,12 @@ class WaveletSparsifier(object):
         self.tolerance = tolerance
         self.phi_matrices = []
 
-    def calculate_wavelet(self, node, index):
+    def calculate_wavelet(self, node):
+        """
+        Creating sparse wavelets from a source node:
+        :param node: Source node.
+        :return remaining_waves: Dictionary of attenuated wavelets.
+        """
         impulse = np.zeros((self.graph.number_of_nodes()))
         impulse[node] = 1.0
         wavelet_coefficients = pygsp.filters.approximations.cheby_op(self.pygsp_graph, self.chebyshev, impulse)
