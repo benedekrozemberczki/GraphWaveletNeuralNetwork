@@ -52,9 +52,9 @@ class DenseGraphWaveletLayer(GraphWaveletLayer):
     """
     Dense Graph Wavelet Layer Class.
     """
-
     def forward(self, phi_indices, phi_values, phi_inverse_indices, phi_inverse_values, features):
-
+        """
+        """
         rescaled_phi_indices, rescaled_phi_values = spspmm(phi_indices, phi_values, self.diagonal_weight_indices, self.diagonal_weight_filter.view(-1), self.ncount, self.ncount, self.ncount)
         phi_product_indices, phi_product_values = spspmm(rescaled_phi_indices, rescaled_phi_values, phi_inverse_indices, phi_inverse_values, self.ncount, self.ncount, self.ncount)
         filtered_features = torch.mm(features, self.weight_matrix)
