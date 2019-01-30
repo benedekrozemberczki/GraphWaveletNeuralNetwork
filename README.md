@@ -5,6 +5,8 @@ A PyTorch implementation of "Graph Wavelet Neural Network" (ICLR 2019).
 <p align="justify">
 We present graph wavelet neural network (GWNN), a novel graph convolutional neural network (CNN), leveraging graph wavelet transform to address the shortcomings of previous spectral graph CNN methods that depend on graph Fourier transform. Different from graph Fourier transform, graph wavelet transform can be obtained via a fast algorithm without requiring matrix eigendecomposition with high computational cost. Moreover, graph wavelets are sparse and localized in vertex domain, offering high efficiency and good interpretability for graph convolution. The proposed GWNN significantly outperforms previous spectral graph CNNs in the task of graph-based semi-supervised classification on three benchmark datasets: Cora, Citeseer and Pubmed.</p>
 
+A Tensorflow implementation is accessible [[here]](https://github.com/Eilene/GWNN).
+
 This repository provides an implementation of Graph Wavelet Neural Network as described in the paper:
 
 > Graph Wavelet Neural Network.
