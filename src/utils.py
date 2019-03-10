@@ -104,7 +104,7 @@ class WaveletSparsifier(object):
             index_2 = [ke for k, v in phi_matrix.items() for ke, ve in v.items()]
             scores = [ve for k, v in phi_matrix.items() for ke, ve in v.items()]
             nodes = max(index_1)+1
-            self.phi_matrices[i] = sparse.csr_matrix(sparse.coo_matrix((scores,(index_1,index_2)),shape=(nodes,nodes),dtype=np.float32))
+            self.phi_matrices[i] = sparse.coo_matrix((scores,(index_1,index_2)),shape=(nodes,nodes),dtype=np.float32)
             self.phi_matrices[i] = self.phi_matrices[i]/self.phi_matrices[i].sum(axis=1)
 
     def calculate_density(self):
