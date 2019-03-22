@@ -93,9 +93,8 @@ class GWNNTrainer(object):
         self.class_number = max(self.target)+1
         self.target = torch.LongTensor(self.target).to(self.device)
         
-        self.feature_indices = torch.LongTensor(self.features.nonzero()).to(self.device)
-        self.feature_values = torch.FloatTensor(self.features[self.features.nonzero()]).view(-1).to(self.device)
-
+        self.feature_indices = torch.LongTensor([self.features.row, self.features.col]).to(self.device)
+        self.feature_values = torch.FloatTensor(self.features.data).view(-1).to(self.device)
 
         self.phi_indices = torch.LongTensor(self.sparsifier.phi_matrices[0].nonzero()).to(self.device).to(self.device)
         self.phi_values = torch.FloatTensor(self.sparsifier.phi_matrices[0][self.sparsifier.phi_matrices[0].nonzero()]).view(-1).to(self.device)
