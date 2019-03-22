@@ -41,7 +41,7 @@ def feature_reader(path):
     nodes = [int(k) for k,v in features.items()]
     node_count = max(nodes)+1
     feature_count = max(index_2)+1
-    features = sparse.csr_matrix(sparse.coo_matrix((values,(index_1,index_2)),shape=(node_count,feature_count),dtype=np.float32))
+    features = sparse.coo_matrix((values,(index_1,index_2)),shape=(node_count,feature_count),dtype=np.float32)
     return features
 
 def target_reader(path):
