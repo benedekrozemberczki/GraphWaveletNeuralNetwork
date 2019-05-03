@@ -41,7 +41,7 @@ def parameter_parser():
     parser.add_argument("--approximation-order",
                         type = int,
                         default = 3,
-	                help = "Order of Chebyshev polynomial. Default is 20.")
+	                help = "Order of Chebyshev polynomial. Default is 3.")
 
     parser.add_argument("--test-size",
                         type = float,
