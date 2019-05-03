@@ -6,7 +6,7 @@ import networkx as nx
 from tqdm import tqdm
 from scipy import sparse
 from texttable import Texttable
-
+from sklearn.preprocessing import normalize
 def tab_printer(args):
     """
     Function to print the logs in a nice tabular format.
@@ -76,21 +76,23 @@ class WaveletSparsifier(object):
         self.graph = graph
         self.pygsp_graph = pygsp.graphs.Graph(nx.adjacency_matrix(self.graph))
         self.pygsp_graph.estimate_lmax()
-        self.scales = [scale, -scale]
+        self.scales = [-scale, scale]
         self.approximation_order = approximation_order
         self.tolerance = tolerance
         self.phi_matrices = []
 
-    def calculate_wavelet(self, node):
+    def calculate_wavelet(self):
         """
         Creating sparse wavelets from a source node:
         :param node: Source node.
         :return remaining_waves: Dictionary of attenuated wavelets.
         """
-        impulse = np.zeros((self.graph.number_of_nodes()))
-        impulse[node] = 1.0
+        impulse = np.eye(self.graph.number_of_nodes(), dtype=int)
         wavelet_coefficients = pygsp.filters.approximations.cheby_op(self.pygsp_graph, self.chebyshev, impulse)
-        remaining_waves = {target: wave for target, wave in enumerate(wavelet_coefficients) if wave > self.tolerance}
+        wavelet_coefficients[wavelet_coefficients < self.tolerance] = 0
+        index_1, index_2 = wavelet_coefficients.nonzero()
+
+        remaining_waves = sparse.csr_matrix((wavelet_coefficients[index_1,index_2],(index_1,index_2)),shape=(self.graph.number_of_nodes(),self.graph.number_of_nodes()),dtype=np.float32)
         return remaining_waves
 
     def normalize_matrices(self):
@@ -100,12 +102,7 @@ class WaveletSparsifier(object):
         
         print("\nNormalizing the sparsified wavelets.\n")
         for i, phi_matrix in enumerate(self.phi_matrices):
-            index_1 = [k for k, v in phi_matrix.items() for ke, ve in v.items()]
-            index_2 = [ke for k, v in phi_matrix.items() for ke, ve in v.items()]
-            scores = [ve for k, v in phi_matrix.items() for ke, ve in v.items()]
-            nodes = max(index_1)+1
-            self.phi_matrices[i] = sparse.coo_matrix((scores,(index_1,index_2)),shape=(nodes,nodes),dtype=np.float32)
-            self.phi_matrices[i] = self.phi_matrices[i]/self.phi_matrices[i].sum(axis=1)
+            self.phi_matrices[i] =  normalize(self.phi_matrices[i], norm='l1', axis=1)
 
     def calculate_density(self):
         """
@@ -124,7 +121,7 @@ class WaveletSparsifier(object):
         for i, scale in enumerate(self.scales):
             self.heat_filter = pygsp.filters.Heat(self.pygsp_graph, tau = [scale])
             self.chebyshev = pygsp.filters.approximations.compute_cheby_coeff(self.heat_filter, m = self.approximation_order)
-            sparsified_wavelets = {node: self.calculate_wavelet(node) for node in tqdm(self.graph.nodes())}
+            sparsified_wavelets = self.calculate_wavelet()            
             self.phi_matrices.append(sparsified_wavelets)
         self.normalize_matrices()
         self.calculate_density()

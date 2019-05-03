@@ -30,7 +30,7 @@ class GraphWaveletLayer(torch.nn.Module):
         """
         Initializing the diagonal filter and the weight matrix.
         """
-        torch.nn.init.uniform_(self.diagonal_weight_filter, 0.9, 1.1)
+        torch.nn.init.uniform_(self.diagonal_weight_filter, 0.99, 1.01)
         torch.nn.init.xavier_uniform_(self.weight_matrix)
 
 class SparseGraphWaveletLayer(GraphWaveletLayer):

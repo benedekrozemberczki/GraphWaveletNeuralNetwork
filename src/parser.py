@@ -30,7 +30,7 @@ def parameter_parser():
 
     parser.add_argument("--epochs",
                         type = int,
-                        default = 300,
+                        default = 200,
 	                help = "Number of training epochs. Default is 300.")
 
     parser.add_argument("--filters",
@@ -40,7 +40,7 @@ def parameter_parser():
 
     parser.add_argument("--approximation-order",
                         type = int,
-                        default = 20,
+                        default = 3,
 	                help = "Order of Chebyshev polynomial. Default is 20.")
 
     parser.add_argument("--test-size",
@@ -55,7 +55,7 @@ def parameter_parser():
 
     parser.add_argument("--seed",
                         type = int,
-                        default = 42,
+                        default = 32,
 	                help = "Random seed for sklearn pre-training. Default is 42.")
 
     parser.add_argument("--tolerance",
@@ -65,12 +65,12 @@ def parameter_parser():
 
     parser.add_argument("--scale",
                         type = float,
-                        default = 1.0,
+                        default = 1,
 	                help = "Heat kernel scale length. Default is 1.0.")
 
     parser.add_argument("--learning-rate",
                         type = float,
-                        default = 0.001,
+                        default = 0.01,
 	                help = "Learning rate. Default is 0.001.")
 
     parser.add_argument("--weight-decay",
