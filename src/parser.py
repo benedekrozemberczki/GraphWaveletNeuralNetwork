@@ -55,7 +55,7 @@ def parameter_parser():
 
     parser.add_argument("--seed",
                         type = int,
-                        default = 32,
+                        default = 42,
 	                help = "Random seed for sklearn pre-training. Default is 42.")
 
     parser.add_argument("--tolerance",
