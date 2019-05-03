@@ -7,6 +7,7 @@ from tqdm import tqdm
 from scipy import sparse
 from texttable import Texttable
 from sklearn.preprocessing import normalize
+
 def tab_printer(args):
     """
     Function to print the logs in a nice tabular format.
@@ -83,15 +84,13 @@ class WaveletSparsifier(object):
 
     def calculate_wavelet(self):
         """
-        Creating sparse wavelets from a source node:
-        :param node: Source node.
-        :return remaining_waves: Dictionary of attenuated wavelets.
+        Creating sparse wavelets.
+        :return remaining_waves: Sparse matrix of attenuated wavelets.
         """
         impulse = np.eye(self.graph.number_of_nodes(), dtype=int)
         wavelet_coefficients = pygsp.filters.approximations.cheby_op(self.pygsp_graph, self.chebyshev, impulse)
         wavelet_coefficients[wavelet_coefficients < self.tolerance] = 0
         index_1, index_2 = wavelet_coefficients.nonzero()
-
         remaining_waves = sparse.csr_matrix((wavelet_coefficients[index_1,index_2],(index_1,index_2)),shape=(self.graph.number_of_nodes(),self.graph.number_of_nodes()),dtype=np.float32)
         return remaining_waves
 
@@ -115,7 +114,7 @@ class WaveletSparsifier(object):
 
     def calculate_all_wavelets(self):
         """
-        Graph wavelet coefficient calculation for each node.
+        Graph wavelet coefficient calculation.
         """
         print("\nWavelet calculation and sparsification started.\n")
         for i, scale in enumerate(self.scales):
