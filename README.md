@@ -73,14 +73,14 @@ Training the model is handled by the `src/main.py` script which provides the fol
 #### Model options
 
 ```
-  --epochs                INT       Number of Adam epochs.         Default is 300.
-  --learning-rate         FLOAT     Number of training epochs.     Default is 0.001.
+  --epochs                INT       Number of Adam epochs.         Default is 200.
+  --learning-rate         FLOAT     Number of training epochs.     Default is 0.01.
   --weight-decay          FLOAT     Weight decay.                  Default is 5*10**-4.
   --filters               INT       Number of filters.             Default is 16.
   --dropout               FLOAT     Dropout probability.           Default is 0.5.
   --test-size             FLOAT     Test set ratio.                Default is 0.2.
   --seed                  INT       Random seeds.                  Default is 42.
-  --approximation-order   INT       Chebyshev polynomial order.    Default is 20.
+  --approximation-order   INT       Chebyshev polynomial order.    Default is 3.
   --tolerance             FLOAT     Wavelet coefficient limit.     Default is 10**-4.
   --scale                 FLOAT     Heat kernel scale.             Default is 1.0.
 ```
