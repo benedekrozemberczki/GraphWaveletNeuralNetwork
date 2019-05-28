@@ -1,4 +1,7 @@
 Graph Wavelet Neural Network
+	<img src="https://img.shields.io/badge/stars-150+-blue.svg"/>
+        <img src="https://img.shields.io/badge/forks-25+-blue.svg"/>
+	<img src="https://img.shields.io/badge/license-MIT-blue.svg"/>
 ============================================
 A PyTorch implementation of "Graph Wavelet Neural Network" (ICLR 2019).
 <div style="text-align:center"><img src ="gwnn.jpg" ,width=720/></div>
