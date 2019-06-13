@@ -1,5 +1,5 @@
 Graph Wavelet Neural Network
-	<img src="https://img.shields.io/badge/stars-150+-blue.svg"/>
+	<img src="https://img.shields.io/badge/stars-160+-blue.svg"/>
         <img src="https://img.shields.io/badge/forks-25+-blue.svg"/>
 	<img src="https://img.shields.io/badge/license-MIT-blue.svg"/>
 ============================================
