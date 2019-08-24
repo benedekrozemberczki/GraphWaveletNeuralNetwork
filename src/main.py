@@ -19,6 +19,5 @@ def main():
     trainer.score()
     save_logs(args, trainer.logs)
     
-
 if __name__ == "__main__":
     main()
