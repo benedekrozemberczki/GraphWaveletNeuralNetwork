@@ -1,5 +1,5 @@
-import torch
 import time
+import torch
 from tqdm import trange
 from sklearn.model_selection import train_test_split
 from gwnn_layer import SparseGraphWaveletLayer, DenseGraphWaveletLayer
