@@ -98,7 +98,6 @@ class WaveletSparsifier(object):
         """
         Normalizing the wavelet and inverse wavelet matrices.
         """
-        
         print("\nNormalizing the sparsified wavelets.\n")
         for i, phi_matrix in enumerate(self.phi_matrices):
             self.phi_matrices[i] =  normalize(self.phi_matrices[i], norm='l1', axis=1)
