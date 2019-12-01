@@ -35,10 +35,10 @@ scikit-learn      0.20.0
 PyGSP             0.5.1
 ```
 ### Datasets
-
-The code takes the **edge list** of the graph in a csv file. Every row indicates an edge between two nodes separated by a comma. The first row is a header. Nodes should be indexed starting with 0. A sample graph for `Cora` is included in the  `input/` directory. In addition to the edgelist there is a JSON file with the sparse features and a csv with the target variable.
-
-The **feature matrix** is a sparse binary one it is stored as a json. Nodes are keys of the json and feature indices are the values. For each node feature column ids are stored as elements of a list. The feature matrix is structured as:
+<p align="justify">
+The code takes the **edge list** of the graph in a csv file. Every row indicates an edge between two nodes separated by a comma. The first row is a header. Nodes should be indexed starting with 0. A sample graph for `Cora` is included in the  `input/` directory. In addition to the edgelist there is a JSON file with the sparse features and a csv with the target variable.</p>
+<p align="justify">
+The **feature matrix** is a sparse binary one it is stored as a json. Nodes are keys of the json and feature indices are the values. For each node feature column ids are stored as elements of a list. The feature matrix is structured as:</p>
 
 ```javascript
 { 0: [0, 1, 38, 1968, 2000, 52727],
@@ -47,8 +47,8 @@ The **feature matrix** is a sparse binary one it is stored as a json. Nodes are 
   ...
   n: [2018, 10000]}
 ```
-
-The **target vector** is a csv with two columns and headers, the first contains the node identifiers the second the targets. This csv is sorted by node identifiers and the target column contains the class meberships indexed from zero. 
+<p align="justify">
+The **target vector** is a csv with two columns and headers, the first contains the node identifiers the second the targets. This csv is sorted by node identifiers and the target column contains the class meberships indexed from zero. </p>
 
 | **NODE ID**| **Target** |
 | --- | --- |
@@ -88,8 +88,8 @@ Training the model is handled by the `src/main.py` script which provides the fol
 ```
 
 ### Examples
-
-The following commands learn  the weights of a graph wavelet neural network and saves the logs. The first example trains a graph wavelet neural network on the default dataset with standard hyperparameter settings. Saving the logs at the default path.
+<p align="justify">
+The following commands learn  the weights of a graph wavelet neural network and saves the logs. The first example trains a graph wavelet neural network on the default dataset with standard hyperparameter settings. Saving the logs at the default path. </p>
 
 ```
 python src/main.py
