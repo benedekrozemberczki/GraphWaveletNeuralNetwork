@@ -43,7 +43,7 @@ def parameter_parser():
 
     parser.add_argument("--test-size",
                         type=float,
-                        default=0.8,
+                        default=0.2,
 	                help="Ratio of training samples. Default is 0.2.")
 
     parser.add_argument("--dropout",
@@ -74,6 +74,6 @@ def parameter_parser():
     parser.add_argument("--weight-decay",
                         type=float,
                         default=10**-5,
-	                help="Adam weight decay. Default is 5*10^-4.")
+	                help="Adam weight decay. Default is 10^-5.")
 
     return parser.parse_args()
