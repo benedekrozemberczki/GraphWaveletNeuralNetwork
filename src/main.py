@@ -1,11 +1,14 @@
+"""Running GWNN."""
+
 from gwnn import GWNNTrainer
 from utils import WaveletSparsifier
-from parser import parameter_parser
+from param_parser import parameter_parser
 from utils import tab_printer, graph_reader, feature_reader, target_reader, save_logs
 
 def main():
     """
-    Parsing command line parameters, reading data, doing sparsification, fitting a GWNN and saving the logs.
+    Parsing command line parameters, reading data.
+    Doing sparsification, fitting a GWNN and saving the logs.
     """
     args = parameter_parser()
     tab_printer(args)
