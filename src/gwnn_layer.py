@@ -71,13 +71,21 @@ class SparseGraphWaveletLayer(GraphWaveletLayer):
                                                          self.ncount,
                                                          self.ncount)
 
+
+
+
+
         filtered_features = spmm(feature_indices,
                                  feature_values,
                                  self.ncount,
+                                 self.in_channels,
                                  self.weight_matrix)
+
+
 
         localized_features = spmm(phi_product_indices,
                                   phi_product_values,
+                                  self.ncount,
                                   self.ncount,
                                   filtered_features)
 
@@ -120,6 +128,7 @@ class DenseGraphWaveletLayer(GraphWaveletLayer):
 
         localized_features = spmm(phi_product_indices,
                                   phi_product_values,
+                                  self.ncount,
                                   self.ncount,
                                   filtered_features)
 
