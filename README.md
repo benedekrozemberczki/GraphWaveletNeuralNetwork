@@ -1,4 +1,4 @@
-Graph Wavelet Neural Network ![GitHub stars](https://img.shields.io/github/stars/benedekrozemberczki/GraphWaveletNeuralNetwork.svg?style=plastic) ![GitHub forks](https://img.shields.io/github/forks/benedekrozemberczki/GraphWaveletNeuralNetwork.svg?color=blue&style=plastic) ![License](https://img.shields.io/github/license/benedekrozemberczki/GraphWaveletNeuralNetwork.svg?color=blue&style=plastic)
+Graph Wavelet Neural Network ![GitHub stars](https://img.shields.io/github/stars/benedekrozemberczki/GraphWaveletNeuralNetwork.svg?style=plastic) ![GitHub forks](https://img.shields.io/github/forks/benedekrozemberczki/GraphWaveletNeuralNetwork.svg?color=blue&style=plastic) ![License](https://img.shields.io/github/license/benedekrozemberczki/GraphWaveletNeuralNetwork.svg?color=blue&style=plastic) [![Arxiv](https://img.shields.io/badge/ArXiv-1904.07785-orange.svg?color=blue&style=plastic)](https://arxiv.org/abs/1904.07785)
 ============================================
 A PyTorch implementation of "Graph Wavelet Neural Network" (ICLR 2019).
 <div style="text-align:center"><img src ="gwnn.jpg" ,width=720/></div>
