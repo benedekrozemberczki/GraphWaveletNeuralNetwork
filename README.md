@@ -1,7 +1,6 @@
 Graph Wavelet Neural Network
 ============================================
-
- ![License](https://img.shields.io/github/license/benedekrozemberczki/GraphWaveletNeuralNetwork.svg?color=blue&style=plastic) [![Arxiv](https://img.shields.io/badge/ArXiv-1904.07785-orange.svg?color=blue&style=plastic)](https://arxiv.org/abs/1904.07785) [![codebeat badge](https://codebeat.co/badges/07c1f2f5-b138-48cb-bdca-15bed746c500)](https://codebeat.co/projects/github-com-benedekrozemberczki-graphwaveletneuralnetwork-master) [![repo size](https://img.shields.io/github/repo-size/benedekrozemberczki/GWNN.svg)](https://github.com/benedekrozemberczki/GWNN/archive/master.zip)
+[![Arxiv](https://img.shields.io/badge/ArXiv-1904.07785-orange.svg?color=blue&style=plastic)](https://arxiv.org/abs/1904.07785) [![codebeat badge](https://codebeat.co/badges/07c1f2f5-b138-48cb-bdca-15bed746c500)](https://codebeat.co/projects/github-com-benedekrozemberczki-graphwaveletneuralnetwork-master) [![repo size](https://img.shields.io/github/repo-size/benedekrozemberczki/GWNN.svg)](https://github.com/benedekrozemberczki/GraphWaveletNeuralNetwork/archive/master.zip)
 
 A PyTorch implementation of **Graph Wavelet Neural Network (ICLR 2019).**
 <div style="text-align:center"><img src ="gwnn.jpg" ,width=720/></div>
@@ -114,3 +113,9 @@ Approximationg the wavelets with polynomials that have an order of 5.
 ```
 python src/main.py --approximation-order 5
 ```
+
+--------------------------------------------------------------------------------
+
+**License**
+
+- [GNU License](https://github.com/benedekrozemberczki/GraphWaveletNeuralNetwork/blob/master/LICENSE)
