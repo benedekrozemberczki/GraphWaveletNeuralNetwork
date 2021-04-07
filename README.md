@@ -2,7 +2,7 @@ Graph Wavelet Neural Network
 ============================================
 [![Arxiv](https://img.shields.io/badge/ArXiv-1904.07785-orange.svg)](https://arxiv.org/abs/1904.07785) [![codebeat badge](https://codebeat.co/badges/07c1f2f5-b138-48cb-bdca-15bed746c500)](https://codebeat.co/projects/github-com-benedekrozemberczki-graphwaveletneuralnetwork-master) [![repo size](https://img.shields.io/github/repo-size/benedekrozemberczki/GraphWaveletNeuralNetwork.svg)](https://github.com/benedekrozemberczki/GraphWaveletNeuralNetwork/archive/master.zip)⠀[![benedekrozemberczki](https://img.shields.io/twitter/follow/benrozemberczki?style=social&logo=twitter)](https://twitter.com/intent/follow?screen_name=benrozemberczki)⠀
 
-A PyTorch implementation of **Graph Wavelet Neural Network (ICLR 2019).**
+A **PyTorch** implementation of **Graph Wavelet Neural Network (ICLR 2019).**
 <div style="text-align:center"><img src ="gwnn.jpg" ,width=720/></div>
 
 ### Abstract
