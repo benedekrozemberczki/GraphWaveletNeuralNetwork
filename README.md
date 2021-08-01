@@ -18,7 +18,7 @@ This repository provides an implementation of Graph Wavelet Neural Network as de
 > ICLR, 2019.
 > [[Paper]](https://openreview.net/forum?id=H1ewdiR5tQ)
 
--------------------------------------------------------------
+-----------------------------------------------------
 ### Requirements
 
 The codebase is implemented in Python 3.5.2. package versions used for development are just below.
