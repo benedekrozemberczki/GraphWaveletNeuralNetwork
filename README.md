@@ -115,11 +115,11 @@ Approximationg the wavelets with polynomials that have an order of 5.
 python src/main.py --approximation-order 5
 ```
 
---------------------------------------------------------------------------------
+---------------------------------------------------------------
 
 **License**
 
 - [GNU License](https://github.com/benedekrozemberczki/GraphWaveletNeuralNetwork/blob/master/LICENSE)
 
 
---------------------------------------------------------------------------------
+---------------------------------------------------------------
